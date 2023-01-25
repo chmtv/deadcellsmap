@@ -1,13 +1,13 @@
 {
-  "main.css": "/static/css/main.327516d1.chunk.css",
-  "main.js": "/static/js/main.1c8ae121.chunk.js",
-  "main.js.map": "/static/js/main.1c8ae121.chunk.js.map",
-  "static/js/1.74057af0.chunk.js": "/static/js/1.74057af0.chunk.js",
-  "static/js/1.74057af0.chunk.js.map": "/static/js/1.74057af0.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/css/main.327516d1.chunk.css.map": "/static/css/main.327516d1.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.57834aa936b7d5e2ba441c76659aa596.js": "/precache-manifest.57834aa936b7d5e2ba441c76659aa596.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "https://idkrn.github.io/deadcellsmap/static/css/main.327516d1.chunk.css",
+  "main.js": "https://idkrn.github.io/deadcellsmap/static/js/main.1c8ae121.chunk.js",
+  "main.js.map": "https://idkrn.github.io/deadcellsmap/static/js/main.1c8ae121.chunk.js.map",
+  "static/js/1.74057af0.chunk.js": "https://idkrn.github.io/deadcellsmap/static/js/1.74057af0.chunk.js",
+  "static/js/1.74057af0.chunk.js.map": "https://idkrn.github.io/deadcellsmap/static/js/1.74057af0.chunk.js.map",
+  "runtime~main.js": "https://idkrn.github.io/deadcellsmap/static/js/runtime~main.b3d71beb.js",
+  "runtime~main.js.map": "https://idkrn.github.io/deadcellsmap/static/js/runtime~main.b3d71beb.js.map",
+  "static/css/main.327516d1.chunk.css.map": "https://idkrn.github.io/deadcellsmap/static/css/main.327516d1.chunk.css.map",
+  "index.html": "https://idkrn.github.io/deadcellsmap/index.html",
+  "precache-manifest.cb963a034914553d01fee2fdc65da24e.js": "https://idkrn.github.io/deadcellsmap/precache-manifest.cb963a034914553d01fee2fdc65da24e.js",
+  "service-worker.js": "https://idkrn.github.io/deadcellsmap/service-worker.js"
 }
