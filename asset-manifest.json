@@ -1,13 +1,13 @@
 {
-  "main.css": "/deadcellsmap/static/css/main.879d4c9d.chunk.css",
-  "main.js": "/deadcellsmap/static/js/main.3dd9d0db.chunk.js",
-  "main.js.map": "/deadcellsmap/static/js/main.3dd9d0db.chunk.js.map",
-  "static/js/1.74057af0.chunk.js": "/deadcellsmap/static/js/1.74057af0.chunk.js",
-  "static/js/1.74057af0.chunk.js.map": "/deadcellsmap/static/js/1.74057af0.chunk.js.map",
-  "runtime~main.js": "/deadcellsmap/static/js/runtime~main.a5018043.js",
-  "runtime~main.js.map": "/deadcellsmap/static/js/runtime~main.a5018043.js.map",
-  "static/css/main.879d4c9d.chunk.css.map": "/deadcellsmap/static/css/main.879d4c9d.chunk.css.map",
-  "index.html": "/deadcellsmap/index.html",
-  "precache-manifest.73d670568e7aefdcdc2376b61e83af38.js": "/deadcellsmap/precache-manifest.73d670568e7aefdcdc2376b61e83af38.js",
-  "service-worker.js": "/deadcellsmap/service-worker.js"
+  "main.css": "deadcellsmap/static/css/main.879d4c9d.chunk.css",
+  "main.js": "deadcellsmap/static/js/main.3dd9d0db.chunk.js",
+  "main.js.map": "deadcellsmap/static/js/main.3dd9d0db.chunk.js.map",
+  "static/js/1.74057af0.chunk.js": "deadcellsmap/static/js/1.74057af0.chunk.js",
+  "static/js/1.74057af0.chunk.js.map": "deadcellsmap/static/js/1.74057af0.chunk.js.map",
+  "runtime~main.js": "deadcellsmap/static/js/runtime~main.38014946.js",
+  "runtime~main.js.map": "deadcellsmap/static/js/runtime~main.38014946.js.map",
+  "static/css/main.879d4c9d.chunk.css.map": "deadcellsmap/static/css/main.879d4c9d.chunk.css.map",
+  "index.html": "deadcellsmap/index.html",
+  "precache-manifest.ff599ab982ecfd63b39fc9bd9f69c5cd.js": "deadcellsmap/precache-manifest.ff599ab982ecfd63b39fc9bd9f69c5cd.js",
+  "service-worker.js": "deadcellsmap/service-worker.js"
 }
