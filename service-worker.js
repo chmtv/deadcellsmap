@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "./deadcellsmap/precache-manifest.e410cc2d7120e09c567e543e3a7b909c.js"
+  "/deadcellsmap/precache-manifest.a502c253c6de44fe7529b62cd608e1b9.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("./deadcellsmap/index.html", {
+workbox.routing.registerNavigationRoute("/deadcellsmap/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
