@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "73dd52feb87c3c0ad0a1",
+    "revision": "29d3589a6594f1105bb0",
     "url": "https://idkrn.github.io/deadcellsmap/static/css/main.879d4c9d.chunk.css"
   },
   {
-    "revision": "73dd52feb87c3c0ad0a1",
-    "url": "https://idkrn.github.io/deadcellsmap/static/js/main.73dd52fe.chunk.js"
+    "revision": "29d3589a6594f1105bb0",
+    "url": "https://idkrn.github.io/deadcellsmap/static/js/main.29d3589a.chunk.js"
   },
   {
     "revision": "74057af0f6665da8b728",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "https://idkrn.github.io/deadcellsmap/static/js/runtime~main.b3d71beb.js"
   },
   {
-    "revision": "1b60f9aba9c09931ccf1a27712d66d5a",
+    "revision": "d59c61fbbf04c4643c8f92b2d7bd0ffd",
     "url": "https://idkrn.github.io/deadcellsmap/index.html"
   }
 ];

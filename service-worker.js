@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://idkrn.github.io/deadcellsmap/precache-manifest.ca7ed6bff20991db76591ae5473f8954.js"
+  "https://idkrn.github.io/deadcellsmap/precache-manifest.f5c1dfa173be66b32eb2dba8654402b7.js"
 );
 
 workbox.clientsClaim();
