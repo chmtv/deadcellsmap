@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "05cacbe0723ebd709c89",
-    "url": "/deadcellsmap/static/css/main.879d4c9d.chunk.css"
+    "revision": "4625dc4e640ba5a8fe44",
+    "url": "/deadcellsmap/static/css/main.fc52bf2b.chunk.css"
   },
   {
-    "revision": "05cacbe0723ebd709c89",
-    "url": "/deadcellsmap/static/js/main.05cacbe0.chunk.js"
+    "revision": "4625dc4e640ba5a8fe44",
+    "url": "/deadcellsmap/static/js/main.4625dc4e.chunk.js"
   },
   {
     "revision": "74057af0f6665da8b728",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/deadcellsmap/static/js/runtime~main.a5018043.js"
   },
   {
-    "revision": "a34f375d4194dfe668ef307c48c936f3",
+    "revision": "f19b83d7131f75d73ce3e41810fea33b",
     "url": "/deadcellsmap/index.html"
   }
 ];
