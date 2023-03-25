@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'Dosis';
+    src: url(Dosis-VariableFont_wght.ttf);
+}
+body {
+    background-color: #161a33;
+    
+    
+    font-family: 'Dosis';
+    margin:0;
+    scrollbar-width: none !important;
+    overflow:scroll;
+}
+* {
+    scrollbar-width: none !important;
+}
+#settingsButton {
+    width: 5vh;
+    height:5vh;
+}
+#archerMajorContainer div::-webkit-scrollbar {
+    display: none;
+}
+#container {
+    height: 400vh;
+}
+.mapTile {
+    scrollbar-width: none !important;
+    display:flex;
+    flex-direction: column;
+    position:absolute;
+
+    width:15%;
+    height:5%;
+
+    margin:10px;
+    text-align: center;
+    
+    border:#6e3433 solid 5px;
+    border-radius: 3px;
+    background-color: #34aeda;
+}
+.edgeLabel {
+    color: white;
+    display:flex;
+    align-items: center;
+    
+    background-color:#161a33dd;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.edgeLabel * {
+    
+}
+@media (orientation: portrait) {
+    .mapTile {
+        font-size: 1vh;
+    }
+}
+@media (orientation: landscape) {
+    .mapTile {
+        font-size: 1vw;
+    }
+}
+#background {
+    width:100vw;
+    height:100vh;
+    position:fixed;
+
+    background-image: url("https://idkrn.github.io/deadcellsmap/titleScreen.png");
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#archerMajorContainer, #container, #archerMajorContainer > div, #archerMajorContainer > svg{
+    height:400vh !important;
+    overflow:visible;
+}
+path:hover, g:hover {
+    stroke: red;
+    fill: red;
+}
+g path:hover {
+    stroke: red !important;
+}
+g {
+    stroke-width: 2px !important;
+}
+svg, svg *{
+    pointer-events: all !important;
+}
+
+.mapImgContainer {
+    width: 100%;
+    height:100%;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.mapImgContainer img {
+
+}
+
+.mapName {
+    height:30%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:5px;
+}
+.mapName div {
+    padding:0.5vw;
+}
+.mapDetails {
+    background-color: #34aeda;
+    height:20%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:5px;
+}
+.mapDetails div {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.mapDetails img {
+    width:24px;
+    height:24px;
+}
+
+
+
+
+
+
