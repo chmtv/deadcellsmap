@@ -1,13 +1,14 @@
 {
-  "main.css": "/deadcellsmap/static/css/main.43d23099.chunk.css",
-  "main.js": "/deadcellsmap/static/js/main.6206ee70.chunk.js",
-  "main.js.map": "/deadcellsmap/static/js/main.6206ee70.chunk.js.map",
-  "static/js/1.74057af0.chunk.js": "/deadcellsmap/static/js/1.74057af0.chunk.js",
-  "static/js/1.74057af0.chunk.js.map": "/deadcellsmap/static/js/1.74057af0.chunk.js.map",
+  "main.css": "/deadcellsmap/static/css/main.a7adb1ed.chunk.css",
+  "main.js": "/deadcellsmap/static/js/main.ae13bee7.chunk.js",
+  "main.js.map": "/deadcellsmap/static/js/main.ae13bee7.chunk.js.map",
+  "static/js/1.434854e2.chunk.js": "/deadcellsmap/static/js/1.434854e2.chunk.js",
+  "static/js/1.434854e2.chunk.js.map": "/deadcellsmap/static/js/1.434854e2.chunk.js.map",
   "runtime~main.js": "/deadcellsmap/static/js/runtime~main.a5018043.js",
   "runtime~main.js.map": "/deadcellsmap/static/js/runtime~main.a5018043.js.map",
-  "static/css/main.43d23099.chunk.css.map": "/deadcellsmap/static/css/main.43d23099.chunk.css.map",
+  "static/media/App.css": "/deadcellsmap/static/media/Dosis-VariableFont_wght.d89d7b6e.ttf",
+  "static/css/main.a7adb1ed.chunk.css.map": "/deadcellsmap/static/css/main.a7adb1ed.chunk.css.map",
   "index.html": "/deadcellsmap/index.html",
-  "precache-manifest.79354ff5838c5aefe4fad66d920df993.js": "/deadcellsmap/precache-manifest.79354ff5838c5aefe4fad66d920df993.js",
+  "precache-manifest.8f7a5bab855a7050485ed8b3536e11de.js": "/deadcellsmap/precache-manifest.8f7a5bab855a7050485ed8b3536e11de.js",
   "service-worker.js": "/deadcellsmap/service-worker.js"
 }
