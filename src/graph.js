@@ -44,7 +44,12 @@ const biomesEnum = {
     infestedShipwreck: 26,
     throneRoom: 27,
     lighthouse: 28,
-    crown: 29
+    crown: 29,
+    castleOutskirts: 30,
+    draculaCastle1: 31,
+    defiledNecropolis: 32,
+    draculaCastle2: 33,
+    mastersKeep: 34
   }
 const dlcEnum = {
     badSeed: 0,
@@ -81,7 +86,7 @@ const originalGraph = [
   {
     // 0
     name: "Prisoners' Quarters",
-    edges: [biomesEnum.promenade],
+    edges: [biomesEnum.promenade, biomesEnum.castleOutskirts],
     powerScrolls: 2,
     runeProperties: [
       new runeProperty(runesEnum.vine, {edges: [biomesEnum.toxicSewers]}),
@@ -128,7 +133,9 @@ const originalGraph = [
     ],
     runeProperties: [
       new runeProperty(runesEnum.ram, {edges: [biomesEnum.ancientSewers]}),
-      new runeProperty(runesEnum.spider, {edges: [biomesEnum.corruptedPrison]})
+      new runeProperty(runesEnum.spider, {edges: [
+        biomesEnum.corruptedPrison,
+      ]})
     ],
     img: "https://deadcells.wiki.gg/images/f/fe/Toxic_Sewers.png",
     top: 20,
@@ -145,10 +152,11 @@ const originalGraph = [
       new bscProperty(4, {scrollFragments: 1})
     ],
     runeProperties: [
-      new runeProperty(runesEnum.spider, biomesEnum.prisonDepths)
+      new runeProperty(runesEnum.spider, {edges:[biomesEnum.prisonDepths]})
     ],
     dualScrolls: 2,
     img: "./arboretum.webp",
+    dlc: 0,
     scrollFragments: 0,
     top: 20,
     left: -40
@@ -203,6 +211,7 @@ const originalGraph = [
     name: "Morass of the Banished",
     img: "https://deadcells.wiki.gg/images/4/4b/Morass_of_the_Banished.png",
     edges: [biomesEnum.nest],
+    dlc: dlcEnum.badSeed,
     powerScrolls: 3,
     dualScrolls: 2,
     scrollFragments: 0,
@@ -270,6 +279,7 @@ const originalGraph = [
       new runeProperty(runesEnum.spider, {edges: [biomesEnum.graveyard]})
     ],
     powerScrolls: 0,
+    dlc: dlcEnum.badSeed,
     top: 80,
     left: 0
   },
@@ -319,6 +329,7 @@ const originalGraph = [
       new bscProperty(3, {scrollFragments: 1}),
       new bscProperty(4, {scrollFragments: 1})
     ],
+    dlc: dlcEnum.fatalFalls,
     top: 100,
     left: -20
   },
@@ -369,6 +380,7 @@ const originalGraph = [
       new bscProperty(3, {scrollFragments: 3}),
       new bscProperty(4, {scrollFragments: 1})
     ],
+    dlc: dlcEnum.fatalFalls,
     top: 120,
     left: -40
   },
@@ -441,7 +453,7 @@ const originalGraph = [
     // 22
     name: "Clock Room",
     img: "https://deadcells.wiki.gg/images/thumb/3/37/Clock_Room.png/299px-Clock_Room.png",
-    edges: [biomesEnum.highPeakCastle, biomesEnum.distillery, biomesEnum.infestedShipwreck],
+    edges: [biomesEnum.highPeakCastle, biomesEnum.distillery, biomesEnum.infestedShipwreck, biomesEnum.draculaCastle2],
     scrollFragments: 0,
     powerScrolls: 0,
     bscProperties: [
@@ -450,7 +462,7 @@ const originalGraph = [
       new bscProperty(4, {scrollFragments: 1})
     ],
     top: 140,
-    left: -20
+    left: 0
   },
   {
     // 23
@@ -465,7 +477,7 @@ const originalGraph = [
     ],
     powerScrolls: 0,
     top: 140,
-    left: 0
+    left: 20
   },
   {
     // 24
@@ -538,13 +550,82 @@ const originalGraph = [
     top: 200,
     left: 0
   },
+  //
+  //                            CASLTEVANIA
+  //
   {
     // 30
     name: "Castle's Outskirts",
     img: "https://deadcells.wiki.gg/images/a/a7/Castle%27s_Outskirts.png",
+    edges: [
+      biomesEnum.draculaCastle1
+    ],
+    powerScrolls: 1,
+    dualScrolls: 2,
+    scrollFragments: 0,
+    bscProperties: [
+      new bscProperty(1, {powerScrolls: 1}),
+      new bscProperty(3, {scrollFragments: 1}),
+      new bscProperty(4, {scrollFragments: 1})
+    ],
     dlc: dlcEnum.castlevania,
-    top: 40,
-    left: -40
+    top: 31,
+    left: -20
+  },
+  {
+    // 31
+    name: "Dracula's Castle", // Depth 3
+    img: "https://deadcells.wiki.gg/images/0/0a/Dracula%27s_Castle.png",
+    edges: [
+      biomesEnum.defiledNecropolis
+    ],
+    powerScrolls: 3,
+    dualScrolls: 2,
+    scrollFragments: 0,
+    bscProperties: [
+      new bscProperty(2, {powerScrolls: 1}),
+      new bscProperty(3, {scrollFragments: 3}),
+      new bscProperty(4, {scrollFragments: 1})
+    ],
+    dlc: dlcEnum.castlevania,
+    top: 55,
+    left: 0
+  },
+  {
+    // 32
+    name: "Defiled Necropolis",
+    img: "https://deadcells.wiki.gg/images/5/5f/Defiled_Necropolis.png",
+    edges: [
+      biomesEnum.slumberingSanctuary, biomesEnum.stiltVillage, biomesEnum.fracturedShrines
+    ],
+    dlc: dlcEnum.castlevania,
+    top: 80,
+    left: 20
+  },
+  {
+    // 33
+    name: "Dracula's Castle", // Depth 6
+    img: "https://deadcells.wiki.gg/images/0/0a/Dracula%27s_Castle.png",
+    edges: [
+      biomesEnum.mastersKeep
+    ],
+    powerScrolls: 3,
+    dualScrolls: 2,
+    scrollFragments: 0,
+    bscProperties: [
+      new bscProperty(3, {scrollFragments: 3}),
+      new bscProperty(4, {scrollFragments: 1})
+    ],
+    dlc: dlcEnum.castlevania,
+    top: 160,
+    left: 40
+  },
+  {
+    name: "Master's Keep",
+    img: "https://deadcells.wiki.gg/images/3/32/Master%27s_Keep.png",
+    dlc: dlcEnum.castlevania,
+    top: 180,
+    left: 40
   }
 ];
 let graph = Array.from(originalGraph)
@@ -615,7 +696,8 @@ function graphWithRuneEffects(runesFlags, inputGraph) {
     })
   return outGraph;
 }
-function createGraph(bsc = 0, dlc = dlcEnum, runes) {
+function createGraph(bsc = 0, dlc = dlc, runes) {
+  console.log(dlc);
     let resultGraph = graphWithBscEffects(bsc);
     resultGraph = graphWithRuneEffects(runes, resultGraph);
 

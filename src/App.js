@@ -22,6 +22,7 @@ class App extends React.Component{
     const dlc = [
       true,
       true,
+      true,
       true
     ]
     let bsc = 0
@@ -46,6 +47,7 @@ class App extends React.Component{
     this.onMouseMove = this.onMouseMove.bind(this);
     this.bscSet = this.bscSet.bind(this);
     this.runeToggle = this.runeToggle.bind(this);
+    this.dlcToggle = this.dlcToggle.bind(this);
   }
 
 
@@ -61,6 +63,14 @@ class App extends React.Component{
   this.setState({
     runes: newRunes,
     graph: createGraph(this.state.bsc, this.state.dlc, newRunes)
+  });
+ }
+ dlcToggle(dlc) {
+  let newDlc = [...this.state.dlc];
+  newDlc[dlc] = !newDlc[dlc];
+  this.setState({
+    dlc: newDlc,
+    graph: createGraph(this.state.bsc, newDlc, this.state.runes)
   });
  }
   onMouseDown(e) {
@@ -108,13 +118,27 @@ class App extends React.Component{
     if (curBiome.edges) {
       let array = this.state.graph[rootIndex].edges.map((targetIndex, edgeIndex) => {
         // Sets the label for the edge, seems unoptimized, will think about it later, probably
-        return {
-          targetId: targetIndex,
-          targetAnchor: 'top',
-          sourceAnchor: 'bottom',
-          style: { strokeColor: "lightblue" },
-          label: curBiome.edgeLabels && curBiome.edgeLabels[edgeIndex]
+        console.log(this.state.graph[targetIndex].name, this.state.dlc[this.state.graph[targetIndex].dlc])
+        // TODO: DLC floors also shouldn't have arrows coming out of them when the DLC is set to false
+        if(this.state.graph[targetIndex].dlc !== undefined && !this.state.dlc[this.state.graph[targetIndex].dlc]) {
+          return {
+            targetId: targetIndex,
+            targetAnchor: 'top',
+            sourceAnchor: 'bottom',
+            style: { strokeColor: '#ffffff00'},
+            label: curBiome.edgeLabels && curBiome.edgeLabels[edgeIndex]
+          }
         }
+        else {
+          return {
+            targetId: targetIndex,
+            targetAnchor: 'top',
+            sourceAnchor: 'bottom',
+            style: { strokeColor: 'lightblue'},
+            label: curBiome.edgeLabels && curBiome.edgeLabels[edgeIndex]
+          }
+        }
+        
       })
       return array;
     }
@@ -131,7 +155,8 @@ class App extends React.Component{
           style={{
             marginTop: `${5 + el.top / 2.2}%`,
             // marginLeft: `${window.innerWidth / 2 + el.left * 10}px`,
-            marginLeft: `${40 + el.left}%`
+            marginLeft: `${40 + el.left}%`,
+
           }}
           powerScrolls={el.powerScrolls}
           dualScrolls={el.dualScrolls}
@@ -156,6 +181,7 @@ class App extends React.Component{
       runes={this.state.runes}
       bsc={this.state.bsc}
       dlc={this.state.dlc}
+      dlcToggle={this.dlcToggle}
       >
       </Menu>
         <div id="archerMajorContainer" >
@@ -171,6 +197,7 @@ class App extends React.Component{
             </ArcherContainer>
           
         </div>
+        
       </>
       
 

@@ -54,9 +54,19 @@ export default class Menu extends Component {
             <input type="checkbox" name="spiderRune" id="spiderRune" checked={this.props.runes[runesEnum.spider]} onClick={() => {this.props.runeToggle(runesEnum.spider)}}/>
             <label htmlFor='spiderRune'><img src="/deadcellsmap/runes/spiderRune.png"/></label>
           </section>
+
           <section id="dlc">
-            <input type="checkbox" name="badSeedDlc" checked={this.props.dlc[dlcEnum.badSeed]} onClick={() => this.props.dlcToggle(dlcEnum.badSeed)} />
-            <label htmlFor='teleRune' style={{backgroundImage: "url(https://deadcells.wiki.gg/images/thumb/b/be/The_Bad_Seed_DLC_Titlecard.jpg/300px-The_Bad_Seed_DLC_Titlecard.jpg)"}}></label>
+            <input type="checkbox" name="badSeedDlc" id="badSeedDlc" checked={this.props.dlc[dlcEnum.badSeed]} onClick={() => {this.props.dlcToggle(dlcEnum.badSeed)}} />
+            <label htmlFor='badSeedDlc' style={{backgroundImage: "url(https://deadcells.wiki.gg/images/thumb/b/be/The_Bad_Seed_DLC_Titlecard.jpg/300px-The_Bad_Seed_DLC_Titlecard.jpg)"}}></label>
+
+            <input type="checkbox" name="fatalFallsDlc" id="fatalFallsDlc" checked={this.props.dlc[dlcEnum.fatalFalls]} onClick={() => {this.props.dlcToggle(dlcEnum.fatalFalls)}} />
+            <label htmlFor='fatalFallsDlc' style={{backgroundImage: "url(https://deadcells.wiki.gg/images/8/84/Fatal_Falls_DLC_Titlecard.png)"}}></label>
+
+            <input type="checkbox" name="QueenAndTheSeaDlc" id="QueenAndTheSeaDlc" checked={this.props.dlc[dlcEnum.QueenAndTheSea]} onClick={() => {this.props.dlcToggle(dlcEnum.QueenAndTheSea)}} />
+            <label htmlFor='QueenAndTheSeaDlc' style={{backgroundImage: "url(https://deadcells.wiki.gg/images/4/4d/The_Queen_and_the_Sea_DLC_Titlecard.jpg)"}}></label>
+
+            <input type="checkbox" name="castlevaniaDlc" id="castlevaniaDlc" checked={this.props.dlc[dlcEnum.castlevania]} onClick={() => {this.props.dlcToggle(dlcEnum.castlevania)}} />
+            <label htmlFor='castlevaniaDlc' style={{backgroundImage: "url(https://deadcells.wiki.gg/images/c/c2/Return_to_Castlevania_DLC_Titlecard.png)"}}></label>
           </section>
         </div>
         <button id="settingsButton" onClick={this.toggleMenu} className={this.state.open ? "settingsButtonOpen" : "settingsButtonClosed"}>

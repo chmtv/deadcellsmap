@@ -26,13 +26,12 @@ button img{
 #menu {
     display:flex;
     flex-wrap: wrap;
-    align-items:center;
+    align-items: center;
     justify-content: space-around;
     position: fixed;
     width:96vw;
     
     overflow: hidden;
-    background-color:#161a3399;
     z-index: 2;
     margin-top: 2vh;
     margin-left:2vw;
@@ -41,6 +40,7 @@ button img{
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
+    background-color:#161a3399;
     -webkit-backdrop-filter: blur(5px);
 
     transition: all 0.2s;
@@ -76,8 +76,16 @@ label, section img {
     border: #541e12 solid 2px;
 }
 #dlc label {
+    margin:5px;
     width:8vw;
     height:4vw;
+    filter: grayscale(90%);
+}
+#dlc input[type="checkbox"]:checked+label {
+    filter: grayscale(0);
+}
+#dlc {
+    
 }
 section img {
     height:5vh;
@@ -86,8 +94,9 @@ section {
     display:flex;
     align-items: center;
     justify-content: center;
+    justify-items: center;
     height: 33%;
-    width:33%;
+    width:33vw;
 }
 
 input[type="radio"]:checked+label, input[type="checkbox"]:checked+label, input[type="checkbox"]:checked+label img {
