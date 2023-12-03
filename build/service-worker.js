@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/deadcellsmap/precache-manifest.6066e8cb98f6cbee27872a5f7a164605.js"
+  "/deadcellsmap/precache-manifest.049c80e67e394bbacfa23bbf9afe4860.js"
 );
 
 workbox.clientsClaim();

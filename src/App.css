@@ -40,7 +40,16 @@ body {
     border-radius: 7px;
     background-color: #34aeda;
     
-    
+    -webkit-transition: box-shadow 0.6s ease-out;
+    -moz-transition: box-shadow 0.6s ease-out;
+    -ms-transition: box-shadow 0.6s ease-out;
+    -o-transition: box-shadow 0.6s ease-out;
+    transition: box-shadow 0.6s ease-out;
+}
+.mapTileHighlighted, .mapTile:hover{
+    -webkit-box-shadow: 0px 0px 18px 8px rgba(76, 153, 176, 1);
+    -moz-box-shadow: 0px 0px 18px 8px rgba(76, 153, 176, 1);
+    box-shadow: 0px 0px 18px 8px rgba(76, 153, 176, 1);
 }
 .edgeLabel {
     color: white;
@@ -71,7 +80,7 @@ body {
     height:100vh;
     position:fixed;
 
-    background-image: url("https://idkrn.github.io/deadcellsmap/titleScreen.png");
+    background-image: url("https://chmtv.github.io/deadcellsmap/titleScreen.png");
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -81,6 +90,7 @@ body {
     height:400vh !important;
     overflow:visible;
 }
+
 path:hover, g:hover {
     stroke: red;
     fill: red;

@@ -6,6 +6,8 @@ import Menu from './Menu.js';
 import ScrollContainer from 'react-indiana-drag-scroll'
 import {createGraph, biomesEnum, dlcEnum, runesEnum} from './graph';
 import EdgeLabel from './edgeLabel';
+import { toHaveAccessibleDescription } from '@testing-library/jest-dom/dist/matchers';
+import _ from "lodash"
 
 class App extends React.Component{
   constructor(props) {
@@ -48,6 +50,8 @@ class App extends React.Component{
     this.bscSet = this.bscSet.bind(this);
     this.runeToggle = this.runeToggle.bind(this);
     this.dlcToggle = this.dlcToggle.bind(this);
+    this.onScroll = this.onScroll.bind(this);
+    this.highlightBiome = this.highlightBiome.bind(this);
   }
 
 
@@ -112,13 +116,17 @@ class App extends React.Component{
       }
     }
   }
+  onScroll(e) {
+    this.setState({
+      scrollY: e.clientY
+    })
+  }
   
   getRelationsArray(rootIndex = 0) {
     let curBiome = this.state.graph[rootIndex]
     if (curBiome.edges) {
-      let array = this.state.graph[rootIndex].edges.map((targetIndex, edgeIndex) => {
+      let array = curBiome.edges.map((targetIndex, edgeIndex) => {
         // Sets the label for the edge, seems unoptimized, will think about it later, probably
-        console.log(this.state.graph[targetIndex].name, this.state.dlc[this.state.graph[targetIndex].dlc])
         // TODO: DLC floors also shouldn't have arrows coming out of them when the DLC is set to false
         if(this.state.graph[targetIndex].dlc !== undefined && !this.state.dlc[this.state.graph[targetIndex].dlc]) {
           return {
@@ -134,7 +142,10 @@ class App extends React.Component{
             targetId: targetIndex,
             targetAnchor: 'top',
             sourceAnchor: 'bottom',
-            style: { strokeColor: 'lightblue'},
+            style: { 
+              strokeColor: curBiome.highlighted ? "hsl(10deg, 90%, 40%)" : "hsl(180deg, 90%, 40%)",
+              strokeWidth: curBiome.highlighted ? "4" : "2",
+            },
             label: curBiome.edgeLabels && curBiome.edgeLabels[edgeIndex]
           }
         }
@@ -146,6 +157,13 @@ class App extends React.Component{
       return [];
     }
   }
+  highlightBiome(index) {
+    let newGraph = _.cloneDeep(this.state.graph)
+    newGraph[index].highlighted = !newGraph[index].highlighted;
+    this.setState({
+      graph: newGraph
+    });
+  }
   mapList() {
     let mapList = this.state.graph.map((el, i) => {
         return <MapTile 
@@ -156,12 +174,14 @@ class App extends React.Component{
             marginTop: `${5 + el.top / 2.2}%`,
             // marginLeft: `${window.innerWidth / 2 + el.left * 10}px`,
             marginLeft: `${40 + el.left}%`,
-
           }}
           powerScrolls={el.powerScrolls}
           dualScrolls={el.dualScrolls}
           scrollFragments={el.scrollFragments}
           img={el.img}
+          visibility={el.hidden ? "hidden" : "visible"}
+          highlightBiome={this.highlightBiome}
+          highlighted={el.highlighted}
         />
     })
     return mapList
@@ -189,7 +209,7 @@ class App extends React.Component{
             <ArcherContainer lineStyle='straight'
             ref={this.archerRef}
             >
-            <div id="container" ref={this.containerRef} onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp} onMouseMove={this.onMouseMove} onMouseLeave={this.onMouseLeave}>
+            <div id="container" ref={this.containerRef} onMouseDown={window.screen.width < 1280 && this.onMouseDown} onMouseUp={this.onMouseUp} onMouseMove={this.onMouseMove} onMouseLeave={this.onMouseLeave}>
                 
                 {this.mapList()}
                 

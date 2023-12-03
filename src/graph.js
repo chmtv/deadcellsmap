@@ -94,7 +94,8 @@ const originalGraph = [
     ],
     img: "./prisonersQuarters.webp",
     top: 0,
-    left: 0
+    left: 0,
+    gearLevel: 1 // The only biome without an increasing gear level is the first draculas castle
   },
   {
     // 1
@@ -114,7 +115,7 @@ const originalGraph = [
         biomesEnum.ossuary,
         biomesEnum.morass
       ]}),
-      new runeProperty(runesEnum.spider, biomesEnum.prisonDepths)
+      new runeProperty(runesEnum.spider, {edges: [biomesEnum.prisonDepths]})
     ],
     img: "./promenade.png",
     top: 20,
@@ -336,7 +337,7 @@ const originalGraph = [
   {
     // 15
     name: "Graveyard",
-    edges: [biomesEnum.undyingShores, biomesEnum.clockTower, biomesEnum.forgottenSepulcher],
+    edges: [biomesEnum.undyingShores, biomesEnum.forgottenSepulcher],
     img: "https://deadcells.wiki.gg/images/thumb/d/d5/Graveyard.png/299px-Graveyard.png",
     powerScrolls: 3,
     dualScrolls: 1,
@@ -620,7 +621,7 @@ const originalGraph = [
     top: 160,
     left: 40
   },
-  {
+  { // 34
     name: "Master's Keep",
     img: "https://deadcells.wiki.gg/images/3/32/Master%27s_Keep.png",
     dlc: dlcEnum.castlevania,
@@ -696,13 +697,50 @@ function graphWithRuneEffects(runesFlags, inputGraph) {
     })
   return outGraph;
 }
+// Decided to change the architecture a little
+function removeNodesWithoutEdges(inputGraph) {
+  let indicesToRemove = []
+    inputGraph.forEach((mainBiome, mainBiomeIndex) => {
+      mainBiome.hidden = true
+      if(mainBiomeIndex > 0) {
+        inputGraph.forEach((secBiome, secBiomeIndex) => {
+          if(secBiome.edges && secBiome.edges.includes(mainBiomeIndex)) {
+            mainBiome.hidden = false;
+          }
+        })
+      }
+      else mainBiome.hidden = false;
+      if(mainBiome.hidden) mainBiome.edges = []
+    })
+    for (var i = indicesToRemove.length -1; i >= 0; i--)
+      inputGraph.splice(indicesToRemove[i],1);
+}
+function removeDlcEdges(inputGraph, dlc) {
+  inputGraph.forEach((biome) => {
+    if(biome.edges) {
+      for(let i = biome.edges.length - 1; i >= 0; i--) {
+        let biomeToCheck = inputGraph[biome.edges[i]]
+        if(biomeToCheck.dlc != null && dlc[biomeToCheck.dlc] == false) {
+          console.log(biome.name)
+          console.log(biome.edges, i)
+          biome.edges.splice(i, 1);
+          console.log(biome.edges, i)
+        }
+      }
+    }
+    
+    
+    
+  })
+}
+
 function createGraph(bsc = 0, dlc = dlc, runes) {
-  console.log(dlc);
     let resultGraph = graphWithBscEffects(bsc);
     resultGraph = graphWithRuneEffects(runes, resultGraph);
+    removeDlcEdges(resultGraph, dlc)
+    removeNodesWithoutEdges(resultGraph)
 
     return resultGraph;
-
 }
 function createEdgeLabel(img, text) {
   return (<EdgeLabel imgSrc={img} text={text}/>)

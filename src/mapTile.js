@@ -18,48 +18,57 @@ export default class mapTile extends Component {
     }
     // <img src={imgSrc} alt={this.props.name} />
     return (
+      <div onClick={() => this.props.highlightBiome(this.props.index)}>
         <ArcherElement
         id={this.props.index}
         relations={this.props.relations}
+        
         >
           
-            <div id={this.props.index} className="mapTile" style={{
+            <div id={this.props.index} className={`mapTile ${this.props.highlighted ? "mapTileHighlighted" : ""}`} style={{
               backgroundColor: "#ddd",
               top: this.props.style.marginTop,
-              left: this.props.style.marginLeft
-              }}>
+              left: this.props.style.marginLeft,
+              visibility: this.props.visibility
+              }}
+              
+            
+              >
                 <div className="mapImgContainer" style={{
                   backgroundImage: `url("${imgSrc}")`
-                }}>
+                }}
+                >
                   
                 </div>
                 <div className="mapName"><div>{this.props.name}</div></div>
               <div className="mapDetails">
                 <div>
-              {this.props.powerScrolls && <>
-                  <img src="powerScroll.png" alt="Power Scroll"></img> 
-                  {this.props.powerScrolls}
-                </> || ""}
+                  {this.props.powerScrolls && <>
+                    <img src="powerScroll.png" alt="Power Scroll"></img> 
+                    {this.props.powerScrolls}
+                  </> || ""}
                 </div>
                 <div>
-                {this.props.dualScrolls && <>
-                  <img src="dualScroll.png" alt="Dual Scroll"></img> 
-                  {this.props.dualScrolls}
-                </> || ""} 
+                  {this.props.dualScrolls && <>
+                    <img src="dualScroll.png" alt="Dual Scroll"></img> 
+                    {this.props.dualScrolls}
+                  </> || ""} 
                 </div>
-                {
-                  
-                  this.props.scrollFragments && 
-                  <>
-                    , Fragments: {this.props.scrollFragments}
-                  </>
-                   || ""
-                }
+                <div>
+                  {
+                    this.props.scrollFragments && 
+                    <>
+                      , Fragments: {this.props.scrollFragments}
+                    </>
+                    || ""
+                  }
+                </div>
               </div>
               </div>
             
           
         </ArcherElement>
+      </div>
     )
   }
 }
