@@ -1,0 +1,11 @@
+{
+  "name": "dcgearlevelscraping",
+  "packageManager": "yarn@3.6.1",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "clipboardy": "^3.0.0",
+    "puppeteer": "chrome-84"
+  },
+  "type": "module"
+}
