@@ -36,7 +36,7 @@ body {
     margin:10px;
     text-align: center;
     
-    border:#6e3433 solid 5px;
+    border:#6e3433 solid 3px;
     border-radius: 7px;
     background-color: #34aeda;
     
@@ -138,12 +138,22 @@ svg, svg *{
     justify-content: center;
     align-items: center;
 }
-.mapDetails img {
-    width:24px;
-    height:24px;
+.mapDetails img, .lootAndShops img {
+    width:1em;
+    height:1em;
 }
 
-
+.lootAndShops {
+    display:flex;
+    background-color: #6e3433;
+    color: #eee;
+    display:flex;
+    flex-wrap: wrap;
+}
+.lootAndShops * {
+    margin: 2px;
+    display:inline;
+}
 
 
 

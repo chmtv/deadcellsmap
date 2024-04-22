@@ -182,6 +182,8 @@ class App extends React.Component{
           visibility={el.hidden ? "hidden" : "visible"}
           highlightBiome={this.highlightBiome}
           highlighted={el.highlighted}
+          shops={el.shops}
+          chests={el.chests}
         />
     })
     return mapList

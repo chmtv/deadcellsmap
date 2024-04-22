@@ -81,6 +81,12 @@ const runes = [
     imgSrc: "/deadcellsmap/runes/spiderRune.png"
   }
 ];
+const shopEnums = {
+  skill: 0,
+  items: 1,
+  both: 2,
+  food: 3,
+}
 let bsc = 0
 const originalGraph = [
   {
@@ -90,12 +96,20 @@ const originalGraph = [
     powerScrolls: 2,
     runeProperties: [
       new runeProperty(runesEnum.vine, {edges: [biomesEnum.toxicSewers]}),
-      new runeProperty(runesEnum.teleportation, {edges: [biomesEnum.arboretum]})
+      new runeProperty(runesEnum.teleportation, {edges: [biomesEnum.arboretum]}),
+      new runeProperty(runesEnum.teleportation, {items: 1}),
+      new runeProperty(runesEnum.vine, {items: 1}),
     ],
     img: "./prisonersQuarters.webp",
     top: 0,
     left: 0,
-    gearLevel: 1 // The only biome without an increasing gear level is the first draculas castle
+    gearLevel: 1, // The only biome without an increasing gear level is the first draculas castle
+    shops: [
+      shopEnums.both
+    ],
+    chests: 1,
+    items: 2, // One is behind a money door
+    cursedChestPct: 1
   },
   {
     // 1
@@ -105,12 +119,17 @@ const originalGraph = [
     dualScrolls: 2,
     scrollFragments: 0,
     bscProperties: [
-      new bscProperty(1, {powerScrolls: 1}),
-      new bscProperty(3, {scrollFragments: 1}),
-      new bscProperty(4, {scrollFragments: 1})
+      new bscProperty(1, {
+        powerScrolls: 1, 
+        shops: [shopEnums.both]
+      }),
+      new bscProperty(3, {scrollFragments: 1, chests:1}),
+      new bscProperty(4, {scrollFragments: 1, chests:1}),
     ],
     runeProperties: [
-      new runeProperty(runesEnum.teleportation, {edges: [
+      new runeProperty(runesEnum.teleportation, { 
+        shops: [shopEnums.both],
+        edges: [
         // I THINK THIS IS CORRECT, IDK
         biomesEnum.ossuary,
         biomesEnum.morass
@@ -119,7 +138,12 @@ const originalGraph = [
     ],
     img: "./promenade.png",
     top: 20,
-    left: 0
+    left: 0,
+    shops: [
+      shopEnums.both
+    ],
+    chests: 1,
+    cursedChestPct: 10,
   },
   { // 2
     name: "Toxic Sewers",
@@ -128,7 +152,7 @@ const originalGraph = [
     dualScrolls: 2,
     scrollFragments: 0,
     bscProperties: [
-      new bscProperty(1, {powerScrolls: 1}),
+      new bscProperty(1, {powerScrolls: 1, chests: 1}),
       new bscProperty(3, {scrollFragments: 2}),
       new bscProperty(4, {scrollFragments: 1})
     ],
@@ -140,7 +164,9 @@ const originalGraph = [
     ],
     img: "https://deadcells.wiki.gg/images/f/fe/Toxic_Sewers.png",
     top: 20,
-    left: 40
+    left: 40,
+    chests: 1,
+    cursedChestPct: 10
   },
   {
     // 3
@@ -148,19 +174,34 @@ const originalGraph = [
     edges: [biomesEnum.ramparts, biomesEnum.morass],
     powerScrolls: 1,
     bscProperties: [
-      new bscProperty(1, {powerScrolls: 1}),
-      new bscProperty(3, {scrollFragments: 1}),
-      new bscProperty(4, {scrollFragments: 1})
+      new bscProperty(1, {powerScrolls: 1,
+        shops: [
+          shopEnums.both
+        ]
+      },
+      ),
+      new bscProperty(3, {scrollFragments: 1, chests: 1}),
+      new bscProperty(4, {scrollFragments: 1, chests: 1})
     ],
     runeProperties: [
-      new runeProperty(runesEnum.spider, {edges:[biomesEnum.prisonDepths]})
+      new runeProperty(runesEnum.spider, {edges:[biomesEnum.prisonDepths], items:1}),
+      new runeProperty(runesEnum.teleportation, {items:1}),
+      new runeProperty(runesEnum.vine, {items:1})
     ],
     dualScrolls: 2,
     img: "./arboretum.webp",
     dlc: 0,
     scrollFragments: 0,
     top: 20,
-    left: -40
+    left: -40,
+    shops: [
+      shopEnums.both,
+      shopEnums.weapon,
+      shopEnums.skill
+    ],
+    chests: 0,
+    cursedChests: 0,
+    cursedChestPct: 10
   },
   {
     // 4
@@ -171,13 +212,19 @@ const originalGraph = [
     scrollFragments: 0,
     bscProperties: [
       new bscProperty(3, {edges: [biomesEnum.insufferableCrypt]}),
-      new bscProperty(2, {powerScrolls: 1}),
-      new bscProperty(3, {scrollFragments: 1}),
-      new bscProperty(4, {scrollFragments: 1})
+      new bscProperty(2, {powerScrolls: 1, shops:[shopEnums.food]}),
+      new bscProperty(3, {scrollFragments: 1, chests:1}),
+      new bscProperty(4, {scrollFragments: 1, chests:1})
+    ],
+    runeProperties: [
+      new runeProperty(runesEnum.ram, {chests:1})
     ],
     img: "https://deadcells.wiki.gg/images/b/be/Ramparts.png",
     top: 60,
-    left: 20
+    left: 20,
+    shops: [shopEnums.both],
+    chests: 0,
+    cursedChestPct: 10
   },
   {
     // 5
@@ -190,6 +237,8 @@ const originalGraph = [
     powerScrolls: 1,
     top: 40,
     left: 35,
+    cursedChestPct: 100,
+    cursedChests: 1
   },
   {
     // 6
@@ -200,12 +249,15 @@ const originalGraph = [
     dualScrolls: 2,
     scrollFragments: 0,
     bscProperties: [
+      new bscProperty(1, {chests:1}),
       new bscProperty(2, {powerScrolls: 1}),
-      new bscProperty(3, {scrollFragments: 3}),
-      new bscProperty(4, {scrollFragments: 2})
+      new bscProperty(3, {scrollFragments: 3, chests:1}),
+      new bscProperty(4, {scrollFragments: 2, chests:1})
     ],
     top: 60,
-    left: 40
+    left: 40,
+    chests:0,
+    cursedChestPct: 10,
   },
   {
     // 7
@@ -217,12 +269,19 @@ const originalGraph = [
     dualScrolls: 2,
     scrollFragments: 0,
     bscProperties: [
-      new bscProperty(2, {powerScrolls: 1}),
+      new bscProperty(2, {powerScrolls: 1, shops: [shopEnums.food]}),
       new bscProperty(3, {scrollFragments: 2}),
       new bscProperty(4, {scrollFragments: 2})
     ],
+    runeProperties: [
+      new runeProperty(runesEnum.ram, {chests:1})
+    ],
     top: 60,
-    left: -20
+    left: -20,
+    chests:0,
+    cursedChestPct: 10,
+    cursedChests: 1,
+    shops: [shopEnums.both],
   },
   {
     // 8
@@ -233,8 +292,11 @@ const originalGraph = [
     bscProperties: [
       new bscProperty(1, {edges: [biomesEnum.ancientSewers]})
     ],
+    shops: [shopEnums.both],
     top: 40,
-    left: -40
+    left: -40,
+    cursedChestPct: 100,
+    cursedChests: 1,
   },
   {
     // 9
@@ -245,12 +307,20 @@ const originalGraph = [
     dualScrolls: 2,
     scrollFragments: 0,
     bscProperties: [
-      new bscProperty(2, {powerScrolls: 1}),
+      new bscProperty(1, {shops: [shopEnums.food]}),
+      new bscProperty(2, {powerScrolls: 1, chests:1}),
       new bscProperty(3, {scrollFragments: 2}),
       new bscProperty(4, {scrollFragments: 1})
     ],
+    runeProperties: [
+      new runeProperty(runesEnum.spider, {items:1}),
+    ],
+    shops: [shopEnums.weapon],
     top: 60,
-    left: -40
+    left: -40,
+    cursedChestPct: 10,
+    cursedChests: 1,
+    chests:0,
   },
   {
     // 10
@@ -310,12 +380,16 @@ const originalGraph = [
     dualScrolls: 1,
     scrollFragments: 0,
     bscProperties: [
-      new bscProperty(3, {powerScrolls: 1}),
-      new bscProperty(3, {scrollFragments: 1}),
+      new bscProperty(1, {chests:1}),
+      new bscProperty(2, {chests:1}),
+      new bscProperty(3, {powerScrolls: 1, scrollFragments: 1, chests:1}),
       new bscProperty(4, {scrollFragments: 1})
     ],
+    shops: [shopEnums.both, shopEnums.food],
+    chests: 2,
     top: 100,
-    left: -40
+    left: -40,
+    cursedChestPct: 10
   },
   {
     // 14
@@ -330,9 +404,11 @@ const originalGraph = [
       new bscProperty(3, {scrollFragments: 1}),
       new bscProperty(4, {scrollFragments: 1})
     ],
+    shops: [shopEnums.both, shopEnums.both, shopEnums.food],
     dlc: dlcEnum.fatalFalls,
+    chests: 2,
     top: 100,
-    left: -20
+    left: -20,
   },
   {
     // 15
@@ -646,6 +722,12 @@ function graphWithBscEffects(bsc = 0, inputGraph = originalGraph) {
         
         biome.powerScrolls += curBscObj.bscProperties.powerScrolls || 0;
         biome.scrollFragments += curBscObj.bscProperties.scrollFragments || 0;
+        biome.chests += curBscObj.bscProperties.chests || 0;
+        biome.cursedChests += curBscObj.bscProperties.cursedChests || 0;
+        biome.chests += curBscObj.bscProperties.cursedChestPct || 0;
+        curBscObj.bscProperties.shops && curBscObj.bscProperties.shops.forEach((shop) => {
+          biome.shops.push(shop)
+        })
         curBscObj.bscProperties.edges && curBscObj.bscProperties.edges.forEach((edge, edgeIndex) => {
           // Sets the edge labels array, I think it should be rewritten to a function that applies a label array
             if(!biome.edgeLabels) {
@@ -679,6 +761,9 @@ function graphWithRuneEffects(runesFlags, inputGraph) {
         if(runesFlags[curRuneObj.rune]) {
           biome.powerScrolls += curRuneObj.runeProperties.powerScrolls || 0;
           biome.scrollFragments += curRuneObj.runeProperties.scrollFragments || 0;
+          curRuneObj.runeProperties.shops && curRuneObj.runeProperties.shops.forEach((shop) => {
+            biome.shops.push(shop)
+          })
           curRuneObj.runeProperties.edges && curRuneObj.runeProperties.edges.forEach((edge, edgeIndex) => {
             // Sets the edge labels array, I think it should be rewritten to a function that applies a label array
             if(!biome.edgeLabels) {
@@ -745,4 +830,4 @@ function createGraph(bsc = 0, dlc = dlc, runes) {
 function createEdgeLabel(img, text) {
   return (<EdgeLabel imgSrc={img} text={text}/>)
 }
-export {createGraph, biomesEnum, runesEnum, dlcEnum}
+export {createGraph, biomesEnum, runesEnum, dlcEnum, shopEnums}
